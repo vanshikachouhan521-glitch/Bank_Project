@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://bank-project-dviq.onrender.com/api/accounts';
+const API_BASE_URL = 'https://bank-project-2-scw5.onrender.com';
 
 export const api = {
   // Get all accounts
