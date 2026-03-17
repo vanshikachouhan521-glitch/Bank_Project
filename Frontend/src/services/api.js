@@ -1,10 +1,14 @@
-const API_BASE_URL = 'https://bank-project-2-scw5.onrender.com';
+// const API_BASE_URL = 'https://bank-project-dviq.onrender.com/api/accounts';
+const API_BASE_URL = 'http://localhost:8000/api/accounts';
 
 export const api = {
   // Get all accounts
   getAllAccounts: async () => {
     try {
       const response = await fetch(API_BASE_URL);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const data = await response.json();
       return data;
     } catch (error) {
@@ -35,6 +39,9 @@ export const api = {
         },
         body: JSON.stringify(accountData),
       });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const data = await response.json();
       return data;
     } catch (error) {

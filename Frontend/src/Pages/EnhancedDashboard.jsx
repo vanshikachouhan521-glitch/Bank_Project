@@ -193,13 +193,17 @@ const EnhancedDashboard = () => {
       }
     });
 
-  const totalBalance = accounts.reduce((sum, account) => sum + account.balance, 0);
-  const accountTypes = [...new Set(accounts.map(acc => acc.accountType))];
+  const totalBalance = Array.isArray(accounts) 
+    ? accounts.reduce((sum, account) => sum + (account.balance || 0), 0)
+    : 0;
+  const accountTypes = Array.isArray(accounts) 
+    ? [...new Set(accounts.map(acc => acc.accountType))]
+    : [];
 
   const stats = [
     {
       label: 'Total Accounts',
-      value: accounts.length,
+      value: Array.isArray(accounts) ? accounts.length : 0,
       change: '+12%',
       positive: true,
       icon: '📊'
